@@ -25,10 +25,8 @@ pub fn average_stats_by_type(pokedex: &[Pokemon]) -> HashMap<String, (u32, u32, 
 
     totals
 }
-
-pub fn top_pokemon_by_type(pokedex: &[Pokemon]) -> HashMap<String, Pokemon> {
+pub fn top_pokemon_by_type(pokedex: &[Pokemon]) -> HashMap<String, Pokemon>{
     let mut top: HashMap<String, Pokemon> = HashMap::new();
-
     for p in pokedex {
         let p_type = p.r#type.clone();
         let p_total = p.hp + p.attack + p.defense + p.s_attack + p.s_defense + p.speed;
