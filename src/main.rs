@@ -18,6 +18,7 @@ fn main() {
     println!("Top Pokémon by Type:");
     for (ptype, poke) in top_pokemon_by_type(&pokedex) {
         let total_stats = poke.hp + poke.attack + poke.defense + poke.s_attack + poke.s_defense + poke.speed;
-        println!("{}: {} with total stats {}", ptype, poke.name, total_stats);
-    }
+        let Pokemon { name, .. } = poke; 
+}
+
 }
