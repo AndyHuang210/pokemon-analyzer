@@ -1,10 +1,17 @@
+
+// Purpose: Performs statistical analysis on Pokémon data.
 use crate::data::Pokemon;
 use std::collections::HashMap;
 
+
+// Calculates the average HP, Attack, Defense, and Speed for each type.
 pub fn average_stats_by_type(pokedex: &[Pokemon]) -> HashMap<String, (u32, u32, u32, u32)> {
     let mut totals: HashMap<String, (u32, u32, u32, u32)> = HashMap::new();
     let mut counts: HashMap<String, u32> = HashMap::new();
 
+//Loops through all Pokémon.
+// Aggregates each Pokémon’s HP, Attack, Defense.
+// Also stores the number of Pokémon of each type.
     for p in pokedex {
         let entry = totals.entry(p.r#type.clone()).or_insert((0, 0, 0, 0));
         entry.0 += p.hp;
@@ -15,6 +22,7 @@ pub fn average_stats_by_type(pokedex: &[Pokemon]) -> HashMap<String, (u32, u32, 
         *counts.entry(p.r#type.clone()).or_insert(0) += 1;
     }
 
+//Convert the running totals to averages by dividing each stat by the count.
     for (ptype, total) in totals.iter_mut() {
         let count = counts.get(ptype).unwrap_or(&1);
         total.0 /= *count;
@@ -25,11 +33,12 @@ pub fn average_stats_by_type(pokedex: &[Pokemon]) -> HashMap<String, (u32, u32, 
 
     totals
 }
+// Finds the strongest Pokémon (by total base stats) in each type.
 pub fn top_pokemon_by_type(pokedex: &[Pokemon]) -> HashMap<String, Pokemon>{
     let mut top: HashMap<String, Pokemon> = HashMap::new();
     for p in pokedex {
         let p_type = p.r#type.clone();
-        let p_total = p.hp + p.attack + p.defense + p.s_attack + p.s_defense + p.speed;
+        let p_total = p.hp + p.attack + p.defense + p.s_attack + p.s_defense + p.speed;  // Total base stats
 
         top.entry(p_type.clone())
             .and_modify(|curr| {
