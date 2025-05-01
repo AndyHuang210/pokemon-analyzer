@@ -2,9 +2,10 @@
 
 mod data;
 mod analysis;
+mod test;
 
 use crate::data::load_data;
-use crate::analysis::{average_stats_by_type, top_pokemon_by_type};
+use crate::analysis::{average_stats_by_type, top_pokemon_by_type, legendary_count};
 
 // Load the Pokémon data.
 fn main() {

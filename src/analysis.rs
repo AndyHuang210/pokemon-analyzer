@@ -52,3 +52,9 @@ pub fn top_pokemon_by_type(pokedex: &[Pokemon]) -> HashMap<String, Pokemon>{
 
     top
 }
+
+pub fn legendary_count(pokedex: &[Pokemon]) -> (u32, u32) {
+    let legendary = pokedex.iter().filter(|p| p.info.contains("Legendary")).count();
+    (legendary as u32, pokedex.len() as u32)
+}
+
