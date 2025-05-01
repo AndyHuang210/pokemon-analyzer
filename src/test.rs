@@ -29,12 +29,10 @@ mod tests {
         let data = mock_data();
         let result = average_stats_by_type(&data);
 
-        // Assuming result is a HashMap with Stats structs
         assert!(result.contains_key("Fire"));
         
-        // Assuming the stats are stored in a Stats struct
         let fire_stats = result["Fire"];
-        assert_eq!(fire_stats.0, 60); // Adjust the type and value accordingly
+        assert_eq!(fire_stats.0, 60); 
     }
 }
 
